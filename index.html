@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Detailed ILAW Lesson Plan Generator</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#f6f7fb;--card:#fff;--tx:#1b2333;--mut:#5d6779;--bd:#d9deea;--pri:#1d4ed8;--priT:#fff;--acc:#fff3c4}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#0f1420;--card:#171e2e;--tx:#e8ecf5;--mut:#9aa6bd;--bd:#2c3650;--pri:#6c93ff;--priT:#0b1020;--acc:#3a3314}}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*:before,*:after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:960px;margin:0 auto;padding:16px}
+h1{font-size:1.4rem;margin:.2em 0}
+.sub,.note{color:var(--mut);font-size:.88rem}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:14px;margin-bottom:14px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:560px){.grid{grid-template-columns:1fr}}
+label{display:block;font-size:.85rem;color:var(--mut);margin-bottom:3px}
+input,select,textarea{width:100%;font:inherit;color:var(--tx);background:var(--bg);border:1px solid var(--bd);border-radius:8px;padding:8px}
+textarea{min-height:64px;resize:vertical}
+.full{grid-column:1/-1}
+button{font:inherit;border:0;border-radius:8px;padding:10px 14px;background:var(--pri);color:var(--priT);cursor:pointer;font-weight:600}
+button.alt{background:transparent;color:var(--pri);border:1px solid var(--pri)}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.sec h2{font-size:1.08rem;margin:16px 0 6px;border-bottom:2px solid var(--pri);padding-bottom:3px}
+.sec h2 span{display:inline-block;background:var(--pri);color:var(--priT);border-radius:6px;padding:0 8px;margin-right:6px}
+.sec h3{font-size:.95rem;margin:10px 0 3px}
+.e{white-space:pre-wrap;border:1px dashed var(--bd);border-radius:8px;padding:8px;min-height:40px;outline:none}
+.e:focus,td:focus{border-color:var(--pri);background:var(--acc)}
+.tw{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:620px;font-size:.9rem}
+th,td{border:1px solid var(--bd);padding:6px;vertical-align:top;white-space:pre-wrap;text-align:left}
+th{background:var(--bg)}
+.hd{display:grid;grid-template-columns:1fr 1fr;gap:4px 12px;font-size:.92rem}
+@media(max-width:560px){.hd{grid-template-columns:1fr}}
+#out{display:none}
+@media print{body{background:#fff;color:#000}.noprint{display:none!important}.card{border:0;padding:0}.e{border:0}main{padding:0}table{min-width:0}}
+</style>
+</head>
+<body>
+<main>
+<div class="noprint">
+<h1>Detailed ILAW Lesson Plan Generator</h1>
+<p class="sub">DepEd ILAW Framework (DO 016, s. 2026): Intentions, Learning Experience, Assessing Learning, Ways Forward. Leave a field blank and the generator drafts it; everything on the plan stays editable.</p>
+<div class="card"><div class="grid">
+<div><label>Teacher</label><input id="teacher"></div>
+<div><label>School</label><input id="school"></div>
+<div><label>Subject</label><input id="subject" placeholder="e.g., Science"></div>
+<div><label>Grade level</label><select id="grade"></select></div>
+<div><label>Term / Week / Date</label><input id="week" placeholder="e.g., Term 1, Week 5, Day 2"></div>
+<div><label>Session length</label><select id="mins"><option>40</option><option>50</option><option>60</option></select></div>
+<div class="full"><label>Topic / Lesson title</label><input id="topic"></div>
+<div class="full"><label>Content standard</label><textarea id="cs"></textarea></div>
+<div class="full"><label>Performance standard</label><textarea id="ps"></textarea></div>
+<div class="full"><label>Learning competency (from the curriculum guide)</label><textarea id="comp"></textarea></div>
+<div class="full"><label>Objectives (optional; one per line, label as Cognitive / Psychomotor / Affective)</label><textarea id="obj"></textarea></div>
+<div class="full"><label>Key vocabulary (comma-separated, optional)</label><input id="vocab"></div>
+<div class="full"><label>Materials and references (optional)</label><textarea id="mat"></textarea></div>
+<div><label>Teaching strategy</label><select id="strat"><option>Inquiry-based</option><option>Cooperative learning</option><option>Direct / explicit instruction</option><option>Problem-based</option><option>Learning stations</option></select></div>
+<div><label>Learner profile</label><input id="notes" placeholder="e.g., mixed levels, Cebuano speakers"></div>
+</div>
+<div class="row"><button id="gen">Generate detailed plan</button><button class="alt" id="ai">Build AI prompt</button></div></div>
+<div class="card" id="aibox" style="display:none"><label>Paste into your preferred AI tool, then review and edit the result</label>
+<textarea id="prompt" style="min-height:220px" readonly></textarea><div class="row"><button id="copy">Copy prompt</button></div></div>
+</div>
+
+<div id="out" class="card">
+<h1 style="text-align:center">Detailed Lesson Plan (ILAW Format)</h1>
+<div class="hd" id="hd"></div>
+<div class="sec" id="plan"></div>
+<p class="note" style="margin-top:14px">AI disclosure: if AI helped draft this plan, it was reviewed and edited by the teacher for alignment with DepEd standards.</p>
+<div class="row noprint"><button id="print">Print / Save as PDF</button><button class="alt" id="cp">Copy plan text</button><button class="alt" id="save">Save to Google Sheet</button></div>
+<p class="note noprint" id="msg"></p>
+</div>
+</main>
+<script>
+// Paste your deployed Apps Script Web App URL here (see Code.gs)
+var SCRIPT_URL="PASTE_YOUR_WEB_APP_URL_HERE";
+var $=function(i){return document.getElementById(i)};
+var g=$("grade");
+["Kindergarten","Grade 1","Grade 2","Grade 3","Grade 4","Grade 5","Grade 6","Grade 7","Grade 8","Grade 9","Grade 10","Grade 11","Grade 12"].forEach(function(x){var o=document.createElement("option");o.textContent=x;g.appendChild(o)});
+function v(i){return $(i).value.trim()}
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;")}
+function vals(){return{t:v("teacher")||"________",sc:v("school")||"________",sub:v("subject")||"________",gr:g.value,wk:v("week")||"________",m:parseInt(v("mins")),tp:v("topic")||"[topic]",cs:v("cs"),ps:v("ps"),c:v("comp")||"[learning competency]",obj:v("obj"),voc:v("vocab"),mat:v("mat"),st:v("strat"),n:v("notes")}}
+function E(id,txt){return '<div class="e" contenteditable id="'+id+'">'+esc(txt)+'</div>'}
+function T(rows){return '<div class="tw"><table><tr><th>Time</th><th>Stage</th><th>Teacher’s Activity</th><th>Learners’ Activity</th></tr>'+rows.map(function(r){return "<tr>"+r.map(function(c){return '<td contenteditable>'+esc(c)+'</td>'}).join("")+"</tr>"}).join("")+"</table></div>"}
+function strat(st,tp){
+var m={"Inquiry-based":["Poses a guiding question and sets up an investigation on "+tp+".","Predict, investigate, and record observations in groups of 4."],
+"Cooperative learning":["Forms heterogeneous groups with roles (leader, recorder, reporter, timekeeper) and assigns a task on "+tp+".","Work in assigned roles; each member is accountable for a part of the output."],
+"Direct / explicit instruction":["Models the concept and a worked example of "+tp+" step by step (I do).","Observe, then try guided examples with the teacher (we do) and on their own (you do)."],
+"Problem-based":["Presents a real, local problem related to "+tp+".","Analyze the problem, propose solutions, and justify their choices."],
+"Learning stations":["Sets up three stations (hands-on, reading/visual, practice) on "+tp+" and monitors rotations.","Rotate through stations and complete the task at each."]};
+return m[st]}
+function gen(){
+var d=vals(),T0=d.m,tp=d.tp;
+var a=Math.round(T0*.12),b=Math.round(T0*.25),x=Math.round(T0*.25),l=Math.round(T0*.2),r=T0-a-b-x-l;
+var s=strat(d.st,tp);
+$("hd").innerHTML=["Teacher: "+d.t,"School: "+d.sc,"Subject: "+d.sub,"Grade: "+d.gr,"Term/Week: "+d.wk,"Duration: "+T0+" minutes","Topic: "+tp].map(function(z){return "<div>"+esc(z)+"</div>"}).join("");
+var obj=d.obj||"Cognitive: Explain the key ideas of "+tp+" in own words.\nPsychomotor: Perform/Demonstrate a task showing "+tp+" correctly.\nAffective: Value the importance of "+tp+" in everyday life and work cooperatively with classmates.";
+var q=[1,2,3,4,5].map(function(i){return i+". Question "+i+" on "+tp+" ________ (Answer: ____)"}).join("\n");
+var h='<h2><span>I</span>Intentions</h2>'+
+'<h3>Content Standard</h3>'+E("s1a",d.cs||"________")+
+'<h3>Performance Standard</h3>'+E("s1b",d.ps||"________")+
+'<h3>Learning Competency</h3>'+E("s1c",d.c)+
+'<h3>Lesson Objectives (by the end of the lesson, learners will be able to)</h3>'+E("s1d",obj)+
+'<h3>Success Criteria</h3>'+E("s1e","I can explain ____.\nI can show/solve ____ correctly.\nI can use ____ in a real-life situation.")+
+'<h3>Key Vocabulary</h3>'+E("s1f",d.voc||"________")+
+'<h3>Materials and References</h3>'+E("s1g",d.mat||"Curriculum guide: ____\nLearning materials/textbook: ____\nVisual aids, activity sheets, locally available materials: ____")+
+'<h2><span>L</span>Learning Experience ('+esc(d.st)+')</h2>'+
+T([[a+" min","Activate","Starts with a hook (local example, picture, or question) about "+tp+". Reviews prerequisite ideas and states the objectives.","Share what they know, answer review questions, and read the objectives."],
+[b+" min","Explore",s[0],s[1]],
+[x+" min","Explain","Facilitates group sharing, clarifies misconceptions, and presents the key concepts of "+tp+" using guide questions: (1) What did you observe/do? (2) What patterns or ideas emerged? (3) How is this connected to our lesson?","Report findings, ask questions, and take notes of the key concepts."],
+[l+" min","Elaborate","Assigns an application task linking "+tp+" to a community or real-life situation. Gives scaffolds to learners who need support and an extension task to advanced learners.","Apply the concept to the new situation individually or in pairs."],
+[r+" min","Evaluate and Generalize","Asks learners to summarize the lesson in one sentence and gives the end-of-lesson assessment.","Write a one-sentence takeaway and answer the assessment."]])+
+'<h3>Differentiation</h3>'+E("s2d",d.n?"Learner profile: "+d.n+"\n":"")+"Support: sentence starters, visual aids, peer partner.\nOn-level: standard task.\nAdvanced: extended or open-ended task."+
+'<h2><span>A</span>Assessing Learning</h2>'+
+'<h3>Formative Assessment (during the lesson)</h3>'+E("s3a","Observation checklist during the Explore and Elaborate stages; oral questions: ____")+
+'<h3>End-of-Lesson Assessment (5 items, with answer key)</h3>'+E("s3b",q)+
+'<h3>Scoring Rubric for the Performance Task</h3>'+
+T4()+
+'<h2><span>W</span>Ways Forward</h2>'+
+'<h3>Assignment / Reinforcement</h3>'+E("s4a","A short practice task on "+tp+" to be done at home or in the next session.")+
+'<h3>Enrichment</h3>'+E("s4b","Apply "+tp+" to a community problem or a mini project.")+
+'<h3>Remediation</h3>'+E("s4c","Re-teach with simpler examples and peer tutoring for learners who did not meet the success criteria.")+
+'<h3>Teacher’s Reflection</h3>'+E("s4d","No. of learners who earned 80% or above: ____\nNo. of learners who need remediation: ____\nWhat worked well: ____\nWhat to improve: ____");
+$("plan").innerHTML=h;
+$("out").style.display="block";$("out").scrollIntoView({behavior:"smooth"});
+}
+function T4(){return '<div class="tw"><table><tr><th>Criteria</th><th>4 – Excellent</th><th>3 – Proficient</th><th>2 – Developing</th><th>1 – Beginning</th></tr>'+["Accuracy of content","Application / Process","Communication / Teamwork"].map(function(c){return '<tr><td contenteditable>'+c+'</td><td contenteditable>____</td><td contenteditable>____</td><td contenteditable>____</td><td contenteditable>____</td></tr>'}).join("")+"</table></div>"}
+function aip(){
+var d=vals();
+$("prompt").value="Act as a DepEd master teacher. Write a DETAILED lesson plan using the official DepEd ILAW Framework (DO 016, s. 2026): Intentions, Learning Experience, Assessing Learning, Ways Forward.\n\nSubject: "+d.sub+"\nGrade: "+d.gr+"\nTerm/Week: "+d.wk+"\nSession length: "+d.m+" minutes\nTopic: "+d.tp+"\nContent standard: "+(d.cs||"(supply from curriculum guide)")+"\nPerformance standard: "+(d.ps||"(supply from curriculum guide)")+"\nLearning competency: "+d.c+"\nTeaching strategy: "+d.st+"\nLearners: Filipino public school learners"+(d.n?", "+d.n:" with mixed learning levels")+(d.voc?"\nKey vocabulary: "+d.voc:"")+"\n\nInclude:\n1. Intentions: standards, competency, cognitive/psychomotor/affective objectives, success criteria, vocabulary, materials and references.\n2. Learning Experience: a timed table (Activate, Explore, Explain, Elaborate, Evaluate) with separate teacher and learner activities, guide questions, and differentiation.\n3. Assessing Learning: formative checks, a 5-item end-of-lesson assessment with answer key, and a 4-level rubric.\n4. Ways Forward: assignment, enrichment, remediation, and teacher's reflection prompts.\n\nUse simple language and low-cost local materials. Do not add sections beyond ILAW.";
+$("aibox").style.display="block";$("aibox").scrollIntoView({behavior:"smooth"});
+}
+function cp(text,btn){
+function ok(){var o=btn.textContent;btn.textContent="Copied!";setTimeout(function(){btn.textContent=o},1500)}
+function fb(){var t=document.createElement("textarea");t.value=text;document.body.appendChild(t);t.select();try{document.execCommand("copy");ok()}catch(e){}document.body.removeChild(t)}
+try{navigator.clipboard.writeText(text).then(ok,fb)}catch(e){fb()}
+}
+function gv(id){var e=$(id);return e?e.innerText:""}
+function planText(){return $("hd").innerText+"\n\n"+$("plan").innerText}
+$("gen").onclick=gen;$("ai").onclick=aip;$("print").onclick=function(){window.print()};
+$("copy").onclick=function(){cp($("prompt").value,$("copy"))};
+$("cp").onclick=function(){cp(planText(),$("cp"))};
+$("save").onclick=function(){
+var m=$("msg"),d=vals(),b=$("save");
+if(SCRIPT_URL.indexOf("PASTE")===0){m.textContent="Set SCRIPT_URL in the code first (see README).";return}
+b.disabled=true;m.textContent="Saving...";
+var data={teacher:d.t,school:d.sc,subject:d.sub,grade:d.gr,week:d.wk,duration:d.m+" minutes",topic:d.tp,competency:d.c,
+contentStd:gv("s1a"),perfStd:gv("s1b"),materials:gv("s1g"),
+intentions:gv("s1d")+"\n\nSuccess criteria:\n"+gv("s1e"),
+learning:$("plan").querySelector("table").innerText+"\n\n"+gv("s2d"),
+assessing:gv("s3a")+"\n\n"+gv("s3b"),
+forward:gv("s4a")+"\n"+gv("s4b")+"\n"+gv("s4c")+"\n"+gv("s4d")};
+fetch(SCRIPT_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(data)})
+.then(function(){m.textContent="Saved to Google Sheet.";b.disabled=false})
+.catch(function(){m.textContent="Could not save. Check your connection and SCRIPT_URL.";b.disabled=false});
+};
+</script>
+</body>
+</html>
