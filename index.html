@@ -1,9 +1,11 @@
+<!-- Copyright (c) 2026 ridojr. All rights reserved. -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Detailed ILAW Lesson Plan Generator</title>
+<meta name="author" content="ridojr">
 <style>
 :root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
 --bg:#f6f7fb;--card:#fff;--tx:#1b2333;--mut:#5d6779;--bd:#d9deea;--pri:#1d4ed8;--priT:#fff;--acc:#fff3c4}
@@ -33,6 +35,7 @@ button.alt{background:transparent;color:var(--pri);border:1px solid var(--pri)}
 table{border-collapse:collapse;width:100%;min-width:620px;font-size:.9rem}
 th,td{border:1px solid var(--bd);padding:6px;vertical-align:top;white-space:pre-wrap;text-align:left}
 th{background:var(--bg)}
+.cr{text-align:center;color:var(--mut);font-size:.85rem;margin:18px 0 6px}
 .hd{display:grid;grid-template-columns:1fr 1fr;gap:4px 12px;font-size:.92rem}
 @media(max-width:560px){.hd{grid-template-columns:1fr}}
 #out{display:none}
@@ -74,6 +77,7 @@ th{background:var(--bg)}
 <div class="row noprint"><button id="print">Print / Save as PDF</button><button class="alt" id="cp">Copy plan text</button><button class="alt" id="save">Save to Google Sheet</button></div>
 <p class="note noprint" id="msg"></p>
 </div>
+<p class="cr">&copy; 2026 ridojr. All rights reserved.</p>
 </main>
 <script>
 // Paste your deployed Apps Script Web App URL here (see Code.gs)
@@ -140,7 +144,7 @@ function fb(){var t=document.createElement("textarea");t.value=text;document.bod
 try{navigator.clipboard.writeText(text).then(ok,fb)}catch(e){fb()}
 }
 function gv(id){var e=$(id);return e?e.innerText:""}
-function planText(){return $("hd").innerText+"\n\n"+$("plan").innerText}
+function planText(){return $("hd").innerText+"\n\n"+$("plan").innerText+"\n\n© 2026 ridojr. All rights reserved."}
 $("gen").onclick=gen;$("ai").onclick=aip;$("print").onclick=function(){window.print()};
 $("copy").onclick=function(){cp($("prompt").value,$("copy"))};
 $("cp").onclick=function(){cp(planText(),$("cp"))};

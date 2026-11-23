@@ -1,3 +1,4 @@
+// Copyright (c) 2026 ridojr. All rights reserved.
 // ILAW Lesson Plan Generator - Google Apps Script backend
 // 1. Create a Google Sheet. 2. Extensions > Apps Script, paste this file.
 // 3. Deploy > New deployment > Web app: Execute as "Me", Access "Anyone".
