@@ -8,13 +8,13 @@
 <meta name="author" content="ridojr">
 <style>
 :root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
---bg:#f6f7fb;--card:#fff;--tx:#1b2333;--mut:#5d6779;--bd:#d9deea;--pri:#1d4ed8;--priT:#fff;--acc:#fff3c4}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#0f1420;--card:#171e2e;--tx:#e8ecf5;--mut:#9aa6bd;--bd:#2c3650;--pri:#6c93ff;--priT:#0b1020;--acc:#3a3314}}
+--bg:#f1faf4;--card:#fff;--tx:#14261b;--mut:#4f6a58;--bd:#cde5d5;--pri:#15803d;--priT:#fff;--acc:#e3f5e8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#0d1a12;--card:#13241a;--tx:#e6f3ea;--mut:#9bb8a5;--bd:#25402e;--pri:#4ade80;--priT:#052e16;--acc:#1c3a28}}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *,*:before,*:after{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
 main{max-width:960px;margin:0 auto;padding:16px}
-h1{font-size:1.4rem;margin:.2em 0}
+h1{font-size:1.4rem;margin:.2em 0;color:var(--pri)}
 .sub,.note{color:var(--mut);font-size:.88rem}
 .card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:14px;margin-bottom:14px}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
@@ -34,7 +34,7 @@ button.alt{background:transparent;color:var(--pri);border:1px solid var(--pri)}
 .tw{overflow-x:auto}
 table{border-collapse:collapse;width:100%;min-width:620px;font-size:.9rem}
 th,td{border:1px solid var(--bd);padding:6px;vertical-align:top;white-space:pre-wrap;text-align:left}
-th{background:var(--bg)}
+th{background:var(--pri);color:var(--priT)}
 .cr{text-align:center;color:var(--mut);font-size:.85rem;margin:18px 0 6px}
 .hd{display:grid;grid-template-columns:1fr 1fr;gap:4px 12px;font-size:.92rem}
 @media(max-width:560px){.hd{grid-template-columns:1fr}}
