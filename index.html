@@ -4,40 +4,38 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Detailed ILAW Lesson Plan Generator</title>
 <meta name="author" content="ridojr">
+<title>ILAW Lesson Plan Generator</title>
 <style>
 :root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
 --bg:#f1faf4;--card:#fff;--tx:#14261b;--mut:#4f6a58;--bd:#cde5d5;--pri:#15803d;--priT:#fff;--acc:#e3f5e8}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#0d1a12;--card:#13241a;--tx:#e6f3ea;--mut:#9bb8a5;--bd:#25402e;--pri:#4ade80;--priT:#052e16;--acc:#1c3a28}}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *,*:before,*:after{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-main{max-width:960px;margin:0 auto;padding:16px}
-h1{font-size:1.4rem;margin:.2em 0;color:var(--pri)}
-.sub,.note{color:var(--mut);font-size:.88rem}
-.card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:14px;margin-bottom:14px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:820px;margin:0 auto;padding:14px}
+h1{font-size:1.3rem;margin:.2em 0;color:var(--pri)}
+.note{color:var(--mut);font-size:.85rem}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:14px;margin-bottom:12px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 @media(max-width:560px){.grid{grid-template-columns:1fr}}
-label{display:block;font-size:.85rem;color:var(--mut);margin-bottom:3px}
-input,select,textarea{width:100%;font:inherit;color:var(--tx);background:var(--bg);border:1px solid var(--bd);border-radius:8px;padding:8px}
-textarea{min-height:64px;resize:vertical}
+label{display:block;font-size:.82rem;color:var(--mut);margin-bottom:2px}
+input,select,textarea{width:100%;font:inherit;color:var(--tx);background:var(--bg);border:1px solid var(--bd);border-radius:8px;padding:7px}
+textarea{min-height:52px;resize:vertical}
 .full{grid-column:1/-1}
-button{font:inherit;border:0;border-radius:8px;padding:10px 14px;background:var(--pri);color:var(--priT);cursor:pointer;font-weight:600}
+button{font:inherit;border:0;border-radius:8px;padding:9px 14px;background:var(--pri);color:var(--priT);cursor:pointer;font-weight:600}
 button.alt{background:transparent;color:var(--pri);border:1px solid var(--pri)}
-.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
-.sec h2{font-size:1.08rem;margin:16px 0 6px;border-bottom:2px solid var(--pri);padding-bottom:3px}
-.sec h2 span{display:inline-block;background:var(--pri);color:var(--priT);border-radius:6px;padding:0 8px;margin-right:6px}
-.sec h3{font-size:.95rem;margin:10px 0 3px}
-.e{white-space:pre-wrap;border:1px dashed var(--bd);border-radius:8px;padding:8px;min-height:40px;outline:none}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+h2{font-size:1rem;margin:12px 0 4px;border-bottom:2px solid var(--pri);padding-bottom:2px}
+h2 span{display:inline-block;background:var(--pri);color:var(--priT);border-radius:6px;padding:0 7px;margin-right:6px}
+.e{white-space:pre-wrap;border:1px dashed var(--bd);border-radius:8px;padding:7px;outline:none}
 .e:focus,td:focus{border-color:var(--pri);background:var(--acc)}
 .tw{overflow-x:auto}
-table{border-collapse:collapse;width:100%;min-width:620px;font-size:.9rem}
-th,td{border:1px solid var(--bd);padding:6px;vertical-align:top;white-space:pre-wrap;text-align:left}
+table{border-collapse:collapse;width:100%;min-width:480px;font-size:.9rem}
+th,td{border:1px solid var(--bd);padding:5px;vertical-align:top;white-space:pre-wrap;text-align:left}
 th{background:var(--pri);color:var(--priT)}
-.cr{text-align:center;color:var(--mut);font-size:.85rem;margin:18px 0 6px}
-.hd{display:grid;grid-template-columns:1fr 1fr;gap:4px 12px;font-size:.92rem}
-@media(max-width:560px){.hd{grid-template-columns:1fr}}
+.hd{font-size:.9rem;margin-bottom:4px}
+.cr{text-align:center;color:var(--mut);font-size:.82rem;margin:14px 0 6px}
 #out{display:none}
 @media print{body{background:#fff;color:#000}.noprint{display:none!important}.card{border:0;padding:0}.e{border:0}main{padding:0}table{min-width:0}}
 </style>
@@ -45,36 +43,36 @@ th{background:var(--pri);color:var(--priT)}
 <body>
 <main>
 <div class="noprint">
-<h1>Detailed ILAW Lesson Plan Generator</h1>
-<p class="sub">DepEd ILAW Framework (DO 016, s. 2026): Intentions, Learning Experience, Assessing Learning, Ways Forward. Leave a field blank and the generator drafts it; everything on the plan stays editable.</p>
+<h1>ILAW Lesson Plan Generator</h1>
+<p class="note">DepEd ILAW: Intentions, Learning Experience, Assessing Learning, Ways Forward. Short plan, fully editable.</p>
 <div class="card"><div class="grid">
 <div><label>Teacher</label><input id="teacher"></div>
 <div><label>School</label><input id="school"></div>
-<div><label>Subject</label><input id="subject" placeholder="e.g., Science"></div>
-<div><label>Grade level</label><select id="grade"></select></div>
-<div><label>Term / Week / Date</label><input id="week" placeholder="e.g., Term 1, Week 5, Day 2"></div>
-<div><label>Session length</label><select id="mins"><option>40</option><option>50</option><option>60</option></select></div>
-<div class="full"><label>Topic / Lesson title</label><input id="topic"></div>
+<div><label>Subject</label><input id="subject"></div>
+<div><label>Grade</label><select id="grade"></select></div>
+<div><label>Term / Week</label><input id="week"></div>
+<div><label>Minutes</label><select id="mins"><option>40</option><option>50</option><option selected>60</option></select></div>
+<div class="full"><label>Plan length</label><select id="mode"><option>Concise</option><option>Detailed</option></select></div>
+<div class="full"><label>Topic (pick a built-in topic or type your own)</label><input id="topic" list="tl"><datalist id="tl"><option>Balanced and unbalanced forces</option><option>Understanding motion</option><option>Levels of biological organization</option><option>Food chains and trophic levels</option><option>Photosynthesis</option></datalist><span class="note" id="tm"></span></div>
+<div class="full"><label>Learning competency</label><textarea id="comp"></textarea></div>
+<div class="full"><label>Key concepts to test (one per line, optional)</label><textarea id="cn"></textarea></div>
+</div>
+<div id="dx" class="grid full" style="display:none;margin-top:8px">
 <div class="full"><label>Content standard</label><textarea id="cs"></textarea></div>
 <div class="full"><label>Performance standard</label><textarea id="ps"></textarea></div>
-<div class="full"><label>Learning competency (from the curriculum guide)</label><textarea id="comp"></textarea></div>
-<div class="full"><label>Objectives (optional; one per line, label as Cognitive / Psychomotor / Affective)</label><textarea id="obj"></textarea></div>
-<div class="full"><label>Key vocabulary (comma-separated, optional)</label><input id="vocab"></div>
-<div class="full"><label>Materials and references (optional)</label><textarea id="mat"></textarea></div>
-<div><label>Teaching strategy</label><select id="strat"><option>Inquiry-based</option><option>Cooperative learning</option><option>Direct / explicit instruction</option><option>Problem-based</option><option>Learning stations</option></select></div>
-<div><label>Learner profile</label><input id="notes" placeholder="e.g., mixed levels, Cebuano speakers"></div>
+<div class="full"><label>Key vocabulary (one per line: word - meaning)</label><textarea id="vocab"></textarea></div>
+<div class="full"><label>Materials (one per line)</label><textarea id="mat"></textarea></div>
+<div class="full"><label>Learner profile / notes</label><input id="notes"></div>
 </div>
-<div class="row"><button id="gen">Generate detailed plan</button><button class="alt" id="ai">Build AI prompt</button></div></div>
-<div class="card" id="aibox" style="display:none"><label>Paste into your preferred AI tool, then review and edit the result</label>
-<textarea id="prompt" style="min-height:220px" readonly></textarea><div class="row"><button id="copy">Copy prompt</button></div></div>
+<div class="row"><button id="gen">Generate</button><button class="alt" id="ai">AI prompt</button></div></div>
+<div class="card" id="aibox" style="display:none"><label>Paste into your AI tool, then review and edit</label>
+<textarea id="prompt" style="min-height:150px" readonly></textarea><div class="row"><button id="copy">Copy prompt</button></div></div>
 </div>
-
 <div id="out" class="card">
-<h1 style="text-align:center">Detailed Lesson Plan (ILAW Format)</h1>
+<h1 style="text-align:center">ILAW Lesson Plan</h1>
 <div class="hd" id="hd"></div>
-<div class="sec" id="plan"></div>
-<p class="note" style="margin-top:14px">AI disclosure: if AI helped draft this plan, it was reviewed and edited by the teacher for alignment with DepEd standards.</p>
-<div class="row noprint"><button id="print">Print / Save as PDF</button><button class="alt" id="cp">Copy plan text</button><button class="alt" id="save">Save to Google Sheet</button></div>
+<div id="plan"></div>
+<div class="row noprint"><button id="print">Print / PDF</button><button class="alt" id="cp">Copy</button><button class="alt" id="save">Save to Sheet</button></div>
 <p class="note noprint" id="msg"></p>
 </div>
 <p class="cr">&copy; 2026 ridojr. All rights reserved.</p>
@@ -87,77 +85,185 @@ var g=$("grade");
 ["Kindergarten","Grade 1","Grade 2","Grade 3","Grade 4","Grade 5","Grade 6","Grade 7","Grade 8","Grade 9","Grade 10","Grade 11","Grade 12"].forEach(function(x){var o=document.createElement("option");o.textContent=x;g.appendChild(o)});
 function v(i){return $(i).value.trim()}
 function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;")}
-function vals(){return{t:v("teacher")||"________",sc:v("school")||"________",sub:v("subject")||"________",gr:g.value,wk:v("week")||"________",m:parseInt(v("mins")),tp:v("topic")||"[topic]",cs:v("cs"),ps:v("ps"),c:v("comp")||"[learning competency]",obj:v("obj"),voc:v("vocab"),mat:v("mat"),st:v("strat"),n:v("notes")}}
-function E(id,txt){return '<div class="e" contenteditable id="'+id+'">'+esc(txt)+'</div>'}
-function T(rows){return '<div class="tw"><table><tr><th>Time</th><th>Stage</th><th>Teacher’s Activity</th><th>Learners’ Activity</th></tr>'+rows.map(function(r){return "<tr>"+r.map(function(c){return '<td contenteditable>'+esc(c)+'</td>'}).join("")+"</tr>"}).join("")+"</table></div>"}
-function strat(st,tp){
-var m={"Inquiry-based":["Poses a guiding question and sets up an investigation on "+tp+".","Predict, investigate, and record observations in groups of 4."],
-"Cooperative learning":["Forms heterogeneous groups with roles (leader, recorder, reporter, timekeeper) and assigns a task on "+tp+".","Work in assigned roles; each member is accountable for a part of the output."],
-"Direct / explicit instruction":["Models the concept and a worked example of "+tp+" step by step (I do).","Observe, then try guided examples with the teacher (we do) and on their own (you do)."],
-"Problem-based":["Presents a real, local problem related to "+tp+".","Analyze the problem, propose solutions, and justify their choices."],
-"Learning stations":["Sets up three stations (hands-on, reading/visual, practice) on "+tp+" and monitors rotations.","Rotate through stations and complete the task at each."]};
-return m[st]}
+function E(id,t){return '<div class="e" contenteditable id="'+id+'">'+esc(t)+'</div>'}
+function vals(){return{t:v("teacher")||"____",sc:v("school")||"____",sub:v("subject")||"____",gr:g.value,wk:v("week")||"____",m:parseInt(v("mins")),tp:v("topic")||"[topic]",c:v("comp")||(TM(v("topic"))?TM(v("topic")).comp:"[competency]"),lt:TM(v("topic")),cn:v("cn"),cs:v("cs"),ps:v("ps"),mat:v("mat"),nt:v("notes"),vo:v("vocab")}}
 function gen(){
-var d=vals(),T0=d.m,tp=d.tp;
-var a=Math.round(T0*.12),b=Math.round(T0*.25),x=Math.round(T0*.25),l=Math.round(T0*.2),r=T0-a-b-x-l;
-var s=strat(d.st,tp);
-$("hd").innerHTML=["Teacher: "+d.t,"School: "+d.sc,"Subject: "+d.sub,"Grade: "+d.gr,"Term/Week: "+d.wk,"Duration: "+T0+" minutes","Topic: "+tp].map(function(z){return "<div>"+esc(z)+"</div>"}).join("");
-var obj=d.obj||"Cognitive: Explain the key ideas of "+tp+" in own words.\nPsychomotor: Perform/Demonstrate a task showing "+tp+" correctly.\nAffective: Value the importance of "+tp+" in everyday life and work cooperatively with classmates.";
-var q=[1,2,3,4,5].map(function(i){return i+". Question "+i+" on "+tp+" ________ (Answer: ____)"}).join("\n");
-var h='<h2><span>I</span>Intentions</h2>'+
-'<h3>Content Standard</h3>'+E("s1a",d.cs||"________")+
-'<h3>Performance Standard</h3>'+E("s1b",d.ps||"________")+
-'<h3>Learning Competency</h3>'+E("s1c",d.c)+
-'<h3>Lesson Objectives (by the end of the lesson, learners will be able to)</h3>'+E("s1d",obj)+
-'<h3>Success Criteria</h3>'+E("s1e","I can explain ____.\nI can show/solve ____ correctly.\nI can use ____ in a real-life situation.")+
-'<h3>Key Vocabulary</h3>'+E("s1f",d.voc||"________")+
-'<h3>Materials and References</h3>'+E("s1g",d.mat||"Curriculum guide: ____\nLearning materials/textbook: ____\nVisual aids, activity sheets, locally available materials: ____")+
-'<h2><span>L</span>Learning Experience ('+esc(d.st)+')</h2>'+
-T([[a+" min","Activate","Starts with a hook (local example, picture, or question) about "+tp+". Reviews prerequisite ideas and states the objectives.","Share what they know, answer review questions, and read the objectives."],
-[b+" min","Explore",s[0],s[1]],
-[x+" min","Explain","Facilitates group sharing, clarifies misconceptions, and presents the key concepts of "+tp+" using guide questions: (1) What did you observe/do? (2) What patterns or ideas emerged? (3) How is this connected to our lesson?","Report findings, ask questions, and take notes of the key concepts."],
-[l+" min","Elaborate","Assigns an application task linking "+tp+" to a community or real-life situation. Gives scaffolds to learners who need support and an extension task to advanced learners.","Apply the concept to the new situation individually or in pairs."],
-[r+" min","Evaluate and Generalize","Asks learners to summarize the lesson in one sentence and gives the end-of-lesson assessment.","Write a one-sentence takeaway and answer the assessment."]])+
-'<h3>Differentiation</h3>'+E("s2d",d.n?"Learner profile: "+d.n+"\n":"")+"Support: sentence starters, visual aids, peer partner.\nOn-level: standard task.\nAdvanced: extended or open-ended task."+
-'<h2><span>A</span>Assessing Learning</h2>'+
-'<h3>Formative Assessment (during the lesson)</h3>'+E("s3a","Observation checklist during the Explore and Elaborate stages; oral questions: ____")+
-'<h3>End-of-Lesson Assessment (5 items, with answer key)</h3>'+E("s3b",q)+
-'<h3>Scoring Rubric for the Performance Task</h3>'+
-T4()+
-'<h2><span>W</span>Ways Forward</h2>'+
-'<h3>Assignment / Reinforcement</h3>'+E("s4a","A short practice task on "+tp+" to be done at home or in the next session.")+
-'<h3>Enrichment</h3>'+E("s4b","Apply "+tp+" to a community problem or a mini project.")+
-'<h3>Remediation</h3>'+E("s4c","Re-teach with simpler examples and peer tutoring for learners who did not meet the success criteria.")+
-'<h3>Teacher’s Reflection</h3>'+E("s4d","No. of learners who earned 80% or above: ____\nNo. of learners who need remediation: ____\nWhat worked well: ____\nWhat to improve: ____");
-$("plan").innerHTML=h;
+var L0=TM(v("topic"));$("tm").textContent=L0?"Built-in lesson found: "+L0.name+". Please check it against your curriculum guide.":"No built-in lesson for this topic, so some fields are placeholders. Use the AI prompt for full content.";
+if($("mode").value==="Detailed"){genD();return}
+var d=vals(),tp=d.tp,cs=d.cn?d.cn.split(/\n+/).map(function(z){return z.trim()}).filter(Boolean):(d.lt?d.lt.cn:[tp]),c1=cs[0],c2=cs[1]||c1;
+var a=Math.round(d.m*.15),b=Math.round(d.m*.4),x=Math.round(d.m*.25),w=d.m-a-b-x;
+$("hd").textContent=d.sub+" | "+d.gr+" | "+d.wk+" | "+d.m+" min | "+d.t+", "+d.sc;
+var rows=[[a+" min","Activate","Greets learners warmly, shows a surprise object or picture about "+tp+", and asks, “What do you notice?” Waits patiently and thanks every answer.","Look closely, whisper ideas to a seatmate, and share what they know."],
+[b+" min","Explore and Explain","Walks around as groups try the activity, asks, “What are you noticing?”, then connects their findings to "+c1+" and the key words.","Work in teams, take turns, share findings, and say the new words with actions."],
+[x+" min","Apply","Offers real-life situations, cheers on thinking, and gives a helping hand or a star challenge.","Apply the idea in pairs and explain their choices."],
+[w+" min","Wrap-up","Asks friendly closing questions, hands out the exit ticket, and praises specific effort.","Say one thing learned and one thing still tricky."]];
+var tb='<div class="tw"><table><tr><th>Time</th><th>Stage</th><th>Teacher</th><th>Learners</th></tr>'+rows.map(function(r){return "<tr>"+r.map(function(c){return '<td contenteditable>'+esc(c)+'</td>'}).join("")+"</tr>"}).join("")+"</table></div>";
+$("plan").innerHTML=
+'<h2><span>I</span>Intentions</h2>'+E("s1","Competency: "+d.c+"\nObjectives: Learners will\n1. explain "+c1+" in their own words;\n2. apply "+c2+" to a real-life situation;\n3. cooperate and participate actively.\nSuccess criteria: I can explain ____ and show ____.\nKey vocabulary: "+VOC(d,cs).map(function(r){return r[0]+" = "+r[1]}).join("; "))+
+'<h2><span>L</span>Learning Experience</h2>'+tb+(d.lt?E("s2","Key ideas:\n"+d.lt.notes+"\nActivity – "+d.lt.act[0]+": "+d.lt.act[2].join(" ")):"")+
+'<h2><span>A</span>Assessing Learning</h2>'+E("s3","Formative questions:\n"+(d.lt?d.lt.q.slice(0,10).filter(function(q,i){return i%2==0||i==3||i==7}).slice(0,5).map(function(q,i){return "Q"+(i+1)+" ("+BLS[q[2]]+") "+q[0]+" → "+q[1]}).join("\n"):"Q1 (Remember) What is "+c1+"?\nQ2 (Understand) Explain "+c1+" in your own words.\nQ3 (Apply) How can "+c2+" be used in our community?\nQ4 (Analyze) How are "+c1+" and "+c2+" alike or different?\nQ5 (Evaluate) Which example is best? Why?")+"\nQuick check: thumbs up/down and mini-whiteboard.\nExit ticket: 1 thing I learned: ____ | 1 example: ____ | 1 question: ____\nMastery: 80% answer Q1 to Q3 correctly.")+
+'<h2><span>W</span>Ways Forward</h2>'+E("s4","Assignment: short practice on "+tp+".\nEnrichment: apply it to a community problem.\nRemediation: re-teach with simpler examples and peer support.\nReflection: ___ learners reached 80%; ___ need remediation; to improve: ____");
 $("out").style.display="block";$("out").scrollIntoView({behavior:"smooth"});
 }
-function T4(){return '<div class="tw"><table><tr><th>Criteria</th><th>4 – Excellent</th><th>3 – Proficient</th><th>2 – Developing</th><th>1 – Beginning</th></tr>'+["Accuracy of content","Application / Process","Communication / Teamwork"].map(function(c){return '<tr><td contenteditable>'+c+'</td><td contenteditable>____</td><td contenteditable>____</td><td contenteditable>____</td><td contenteditable>____</td></tr>'}).join("")+"</table></div>"}
-function aip(){
-var d=vals();
-$("prompt").value="Act as a DepEd master teacher. Write a DETAILED lesson plan using the official DepEd ILAW Framework (DO 016, s. 2026): Intentions, Learning Experience, Assessing Learning, Ways Forward.\n\nSubject: "+d.sub+"\nGrade: "+d.gr+"\nTerm/Week: "+d.wk+"\nSession length: "+d.m+" minutes\nTopic: "+d.tp+"\nContent standard: "+(d.cs||"(supply from curriculum guide)")+"\nPerformance standard: "+(d.ps||"(supply from curriculum guide)")+"\nLearning competency: "+d.c+"\nTeaching strategy: "+d.st+"\nLearners: Filipino public school learners"+(d.n?", "+d.n:" with mixed learning levels")+(d.voc?"\nKey vocabulary: "+d.voc:"")+"\n\nInclude:\n1. Intentions: standards, competency, cognitive/psychomotor/affective objectives, success criteria, vocabulary, materials and references.\n2. Learning Experience: a timed table (Activate, Explore, Explain, Elaborate, Evaluate) with separate teacher and learner activities, guide questions, and differentiation.\n3. Assessing Learning: formative checks, a 5-item end-of-lesson assessment with answer key, and a 4-level rubric.\n4. Ways Forward: assignment, enrichment, remediation, and teacher's reflection prompts.\n\nUse simple language and low-cost local materials. Do not add sections beyond ILAW.";
-$("aibox").style.display="block";$("aibox").scrollIntoView({behavior:"smooth"});
+function P(t){return '<div class="e" contenteditable>'+esc(t)+'</div>'}
+function H(t){return '<h3>'+esc(t)+'</h3>'}
+function TB(h,r){return '<div class="tw"><table><tr>'+h.map(function(z){return "<th>"+esc(z)+"</th>"}).join("")+"</tr>"+r.map(function(x){return "<tr>"+x.map(function(c){return '<td contenteditable>'+esc(c)+'</td>'}).join("")+"</tr>"}).join("")+"</table></div>"}
+function NL(a){return a.map(function(z,i){return (i+1)+". "+z}).join("\n")}
+function BL(a){return a.map(function(z){return "- "+z}).join("\n")}
+function genD(){
+var d=vals(),tp=d.tp,m=d.m,cs=d.cn?d.cn.split(/\n+/).map(function(z){return z.trim()}).filter(Boolean):(d.lt?d.lt.cn:[tp]),c1=cs[0],c2=cs[1]||c1,c3=cs[2]||c1;
+var a=Math.round(m*.13),b=Math.round(m*.25),x=Math.round(m*.2),l=Math.round(m*.25),w=m-a-b-x-l,T=[a,b,x,l,w];
+$("hd").textContent=d.sub+" | "+d.gr+" | "+d.wk+" | "+m+" min | "+d.t+", "+d.sc;
+var vr=d.vo?d.vo.split(/\n+/).map(function(z){var p=z.split(/\s+[-–]\s+|:\s*/);return [p[0],p.slice(1).join(" - ")||"____"]}):cs.map(function(z){return [z,"____"]});
+var mats=d.mat?d.mat.split(/\n+/):d.lt?d.lt.act[1]:["Low-cost, locally available materials: ____","Picture cards or visual aids","Activity sheets, crayons or pencils","Manila paper or recycled cardboard"];
+var ST=[
+["Activate","Welcomes everyone with a smile, shows a surprise object or picture about "+tp+", and asks, “What do you notice?” Gives think time and thanks every idea.","Look closely, whisper ideas to a seatmate, then share what they know and wonder.",
+ ["Greet the class warmly and set a friendly mood.","Show a surprise object, picture, or mini demo related to "+tp+".","Ask, “What do you notice?” and give 5 seconds of think time.","Invite two or three learners to share, thanking each one.","Share the objectives in kid-friendly words."],
+ ["What do you notice?","Where have you seen "+c1+" at home or in school?"],["Learners share examples from their own experience.","The teacher links their answers to "+c1+"."],"Listen for whether learners can connect "+tp+" to daily life.",
+ "“Good morning, everyone! Today we are going to be scientists. Look closely at what I have here. What do you notice? Take a moment to think, then tell your seatmate.”","“I see ____.” “It reminds me of ____ at home.” “I wonder why ____.”"],
+["Explore","Sets up friendly groups, hands out materials, and reminds everyone of safety. Walks around, kneels beside each group, and asks, “What are you noticing?”","Try the activity together, take turns, observe carefully, and draw or jot down what happens.",
+ ["Form groups of 4 and give roles: materials manager, recorder, reporter, encourager.","Explain the task in two simple steps and the safety rules.","Hand out materials and let learners try it on their own first.","Walk around, listen in, and ask probing questions instead of giving answers.","Give a one-minute warning so groups can finish their notes."],
+ ["What did you notice?","What changed when you did ____ differently?","Why do you think that happened?"],["Learners describe what they saw in their own words.","Learners connect the result to "+c1+"."],"Check group notes and how everyone participates.",
+ "“Work with your team. Take turns, be kind, and keep our materials safe. I’ll come around, and I can’t wait to hear what you discover!”","“Let’s try it again.” “Your turn, I’ll write it down.” “Look! It changed when we ____.”"],
+["Explain","Invites groups to share, connects their discoveries to the key ideas with pictures and gestures, and gently clears up misconceptions.","Share what they found, listen to classmates, ask questions, and say the new words aloud with actions.",
+ ["Invite each group reporter to share one discovery.","Thank them, then connect their words to "+c1+" using a picture or demo.","Teach the key words with Say it, Show it, Use it.","Compare "+c1+" and "+c2+" with an example; correct misconceptions kindly (“Good thinking! Let’s look at it again.”).","Summarize the big ideas together on the board."],
+ ["What is "+c1+"?","How is "+c2+" different from "+c1+"?","Why is "+c3+" important?"],["Learners give a short meaning in their own words.","Learners compare using examples."],"Flash a picture and ask learners to explain or classify it.",
+ "“Thank you, Team 2, that was a great observation! Did anyone notice something similar? This idea has a name. Say it with me, then show me an action!”","“So ____ means ____.” “I used to think ____, but now I think ____.”"],
+["Elaborate","Shares real-life situations, cheers on learners’ thinking, and offers a helping hand or a star challenge.","Apply the idea to everyday situations, then sort, draw, or build, and explain their choices to a partner.",
+ ["Present situations from home, school, and the community.","Let learners choose a task: sort, draw, build, or explain.","Give sentence starters and visuals to those who need help, and a star challenge to those who are ready.","Connect to Mathematics, Language, and Values (sharing and respect).","Invite pairs to share their work with another pair."],
+ ["Which situation shows "+c1+"?","How can you use "+c2+" in our community?"],["Learners classify situations correctly.","Learners explain with examples."],"Look at drawings, sorting, and explanations.",
+ "“Now it’s your turn to use what you learned. Pick the task you like best. Need help? Raise your hand or ask your partner. Ready for a challenge? Try the star question!”","“I chose this because ____.” “This is an example of ____ because ____.” “Can you check mine?”"],
+["Evaluate","Asks friendly questions, hands out the exit ticket and test, and gives kind, specific feedback.","Answer honestly, complete the exit ticket, take the test quietly, and share what still feels tricky.",
+ ["Ask a few oral questions in a relaxed tone.","Hand out the 3-2-1 exit ticket and the test.","Remind everyone that mistakes help us learn.","Collect papers and give specific praise: “I liked how you explained ____.”","Close with a thank-you and a peek at the next lesson."],
+ ["What is the most important idea you learned?","What is still confusing?"],["Learners summarize "+tp+" in one sentence.","Learners name what needs more practice."],"Review exit tickets and test results.",
+ "“You worked so hard today! Let’s see what you remember. It’s okay to make mistakes, because they help us learn. Do your best, and tell me what still feels tricky.”","“I learned ____.” “I’m still confused about ____.” “I can show ____.”"]];
+if(d.lt){ST[1][3]=d.lt.act[2].slice()}
+var DF=BL(["Learners needing support: picture cards, gestures, sentence starters, and a friendly peer partner.","Learners meeting expectations: complete the task and explain in their own words.","Advanced learners: take the star challenge to predict, create, or teach a classmate."]);
+var flow=ST.map(function(z,i){return [(i+1)+". "+z[0].toUpperCase()+" ("+T[i]+" min)",z[1],z[2]]});
+var det=ST.map(function(z,i){return H((i+1)+". "+z[0].toUpperCase()+" ("+T[i]+" minutes)")+P("Teacher says:\n"+z[7]+"\n\nLearners might say:\n"+z[8]+"\n\nTeacher’s procedure:\n"+NL(z[3])+"\n\nGuide questions:\n"+BL(z[4])+"\n\nExpected responses:\n"+BL(z[5])+"\n\nFormative assessment: "+z[6]+"\n\nDifferentiation:\n"+DF)}).join("");
+var bl=["Remembering","Understanding","Applying","Analyzing","Evaluating","Creating"];
+var FQ=[["What do you already know about "+tp+"?",0],["Where have you seen "+c1+" at home, school, or in our community?",1],["What do you think will happen if we change ____?",2],["How is "+tp+" useful in daily life?",2],
+["What did you observe during the activity?",0],["What changed when you did ____ differently?",1],["Why do you think that happened?",3],["What do you predict will happen next? Why?",2],
+["What is "+c1+"?",0],["Explain "+c2+" in your own words.",1],["How is "+c1+" different from "+c2+"?",3],["Why is "+c3+" important in "+tp+"?",3],
+["Which situation shows "+c1+": ____ or ____?",2],["How can you use "+c2+" to solve a problem in our community?",2],["Which solution is best for ____? Defend your answer.",4],["Create a drawing or model that shows "+c3+".",5],
+["What is the difference between "+c1+" and "+c2+"?",1],["Give an example of "+c3+".",2],["What is the most important idea you learned about "+tp+"?",4],["Draw or write a summary of "+tp+".",5]];
+if(d.lt)d.lt.q.forEach(function(q,k){FQ[Math.floor(k/2)*4+k%2]=[q[0],q[2],q[1]]});
+var fq=ST.map(function(z,i){return H("Stage "+(i+1)+" – "+z[0].toUpperCase()+" (Questions "+(i*4+1)+"–"+(i*4+4)+")")+TB(["No.","Formative question","Bloom's level","Expected answer"],FQ.slice(i*4,i*4+4).map(function(q,j){return [String(i*4+j+1),q[0],bl[q[1]],q[2]||"____"]}))}).join("");
+var mc=[1,2,3,4,5].map(function(i){return i+". "+["Which best describes "+c1+"?","What is the role of "+c2+" in "+tp+"?","Which situation shows "+c3+"?","What will most likely happen if ____?","Which is the best example of "+c2+"?"][i-1]+"\n   A. ____  B. ____  C. ____  D. ____"}).join("\n");
+var KEY=[1,2,3,4,5,6,7,8,9,10].map(function(){return "____"}),tfT="6. ____ is an example of "+c1+".\n7. "+c2+" is the same as "+c3+".\n8. ____",saT="9. Give one example of "+c1+".\n10. Draw or write something that shows "+c2+".";
+if(d.lt){var LM=d.lt;mc=LM.mc.map(function(q,i){return (i+1)+". "+q[0]+"\n   A. "+q[1][0]+"  B. "+q[1][1]+"  C. "+q[1][2]+"  D. "+q[1][3]}).join("\n");tfT=LM.tf.map(function(t,i){return (6+i)+". "+t[0]}).join("\n");saT=LM.sa.map(function(t,i){return (9+i)+". "+t[0]}).join("\n");KEY=LM.mc.map(function(q){return q[2]}).concat(LM.tf.map(function(t){return t[1]}),LM.sa.map(function(t){return t[1]}))}
+var wk=[["Cognitive","Q1 to Q4, Q9 to Q12","Test 1 to 8","80% score 8 or higher"],["Psychomotor","Q5 to Q8, Q16","Performance task, rubric","Rubric level 3 or higher"],["Affective","Q19","Observation checklist","Cooperates and follows safety rules"]];
+var rb=[["Understanding","Explains "+tp+" independently with examples","Explains correctly","Explains with prompts","Needs considerable support"],["Classification and application","Correct in all examples","Correct in most","Correct in some, with help","Cannot yet classify"],["Demonstration or product","Independent and accurate","Accurate","Accurate with guidance","Needs modeling"],["Communication","Clear and complete","Clear","Partly clear","Needs support to express ideas"],["Participation and safety","Active; always safe","Participates; follows rules","Participates with reminders","Needs frequent reminders"]];
+$("plan").innerHTML=
+'<h2><span>I</span>Intentions</h2>'+H("A. Content Standard")+P(d.cs||"____")+H("B. Performance Standard")+P(d.ps||"____")+H("C. Learning Competency")+P(d.c)+
+H("D. Learning Objectives (at the end of the "+m+"-minute session, learners will be able to)")+P("Cognitive\n1. Identify "+c1+" using familiar examples.\n2. Explain "+c2+" in their own words.\n3. Distinguish "+c1+" from "+c3+" using examples.\nPsychomotor\n4. Demonstrate "+c1+" through a simple activity.\n5. Draw, build, or sort to represent "+c2+".\n6. Participate in an investigation about "+tp+".\nAffective\n7. Show cooperation, curiosity, and respect for classmates.\n8. Follow safety rules when handling materials.")+
+H("E. Success Criteria (I can statements)")+P("[ ] I can identify "+c1+".\n[ ] I can explain "+c2+".\n[ ] I can tell the difference between "+c1+" and "+c3+".\n[ ] I can show what I learned through a drawing or activity.\n[ ] I can work safely with my classmates.")+
+H("F. Key Vocabulary")+TB(["Word","Learner-friendly meaning","Use it in a sentence","Action / gesture"],VOC(d,cs))+P("Say it – Show it – Use it: say the word together, show the picture or action, then use it in a sentence about "+tp+". Post the words on a word wall.")+H("G. Learning Materials and Resources")+P(BL(mats)+"\nSafety reminders: use lightweight, safe objects; keep the area clear; no sharp materials.")+
+H("H. References")+P(NL(["Department of Education, DepEd Order No. 016, s. 2026, Guidelines on Lesson Planning and Learning Design.","DepEd curriculum guide and applicable learning standards for "+d.sub+".","Teacher-prepared illustrations, picture cards, and locally available materials."]))+
+'<h2><span>L</span>Learning Experience</h2>'+H("A. Lesson Flow ("+m+" minutes, inquiry-based: Activate, Explore, Explain, Elaborate, Evaluate)")+TB(["Stage / Time","Teacher activities","Learner activities"],flow)+(d.lt?H("B. Lesson Content (Discussion Notes)")+P(d.lt.notes)+H("Explore Activity: "+d.lt.act[0])+P("Materials: "+d.lt.act[1].join(", ")+"\nSteps:\n"+NL(d.lt.act[2])):"")+H((d.lt?"C":"B")+". Detailed Teaching and Learning Activities")+det+H((d.lt?"D":"C")+". Friendly Classroom Phrases")+P("Praise: “I like how you explained that.” “Thank you for sharing your idea.”\nEncourage: “Good try! What if we look at it another way?” “Take your time. I’ll wait.”\nRedirect: “Let’s check that together.” “Who can add to that idea?”\nLearner sentence starters: “I think ____ because ____.” “I agree with ____ because ____.” “I need help with ____.”")+
+(d.nt?H("Learner profile")+P(d.nt):"")+
+'<h2><span>A</span>Assessing Learning</h2>'+H("A. Formative Assessment Questions (20, lower- to higher-order)")+fq+
+H("B. Quick Checks for Understanding")+TB(["When","Quick check","Teacher response"],[["Activate","Thumbs up, sideways, or down on "+c1,"Repeat the demonstration if confused."],["Explore","Predict before each trial","Model again, slower."],["Explain","Flash a picture: classify or explain","Use contrasting examples."],["Elaborate","Mini-whiteboard or drawing","Provide a scaffold."],["Evaluate","Oral questions and exit ticket","Identify who needs reteaching or enrichment."]])+
+H("C. 3-2-1 Exit Ticket")+P("3 things I learned about "+tp+": ____\n2 examples of "+c1+" I see at home or school: ____\n1 thing I can show or explain: ____\n(Accept oral answers, pointing, or drawings.)")+
+H("D. End-of-Lesson Test (10 points)")+P("Part I. Multiple Choice (1 point each)\n"+mc+"\n\nPart II. True or False (1 point each)\n"+tfT+"\n\nPart III. Short Answer (1 point each)\n"+saT)+
+H("E. Answer Key")+TB(["Item","Correct answer"],[1,2,3,4,5,6,7,8,9,10].map(function(i){return [String(i),KEY[i-1]]}))+P("Scoring: multiple choice 5, true or false 3, short answer 2. Total 10. Mastery: 8 or higher.")+
+H("F. Assessment Alignment Matrix")+TB(["Objective","Evidence","Items"],wk.slice(0,3).map(function(r){return [r[0],r[2],r[1]]}))+
+H("G. Four-Level Performance Rubric")+TB(["Criteria","4 – Advanced","3 – Proficient","2 – Developing","1 – Beginning"],rb)+P("Interpretation (5 criteria, 1 to 4 each): 17–20 Advanced; 13–16 Proficient; 9–12 Developing; 5–8 Beginning.")+
+'<h2><span>W</span>Ways Forward</h2>'+H("A. Assignment / Home-Based Learning")+P("Activity: \""+tp+" Around My Home\"\nWith a parent or guardian, observe three examples of "+c1+" at home. Draw or write what you saw.\nGuide questions:\n"+NL(["What did you observe?","Where did you see it?","How does it relate to "+tp+"?"])+"\nDrawings may be submitted instead of written answers.")+
+H("B. Enrichment")+P(NL(["Detectives: find five examples of "+c1+" in your surroundings.","Make your own diagram or model of "+c2+".","Predict what will happen if ____ changes, and explain."]))+
+H("C. Remediation")+P(NL(["Teacher models "+c1+"; the learner imitates until correct.","Picture matching: sort pictures under the correct heading.","Guided practice with prepared visuals and a peer tutor."])+"\nSchedule: 10–15 minutes in a small group, then an oral or picture-based re-check.")+
+H("D. Teacher's Reflection")+P("1. Achievement of objectives: How many learners met each objective?\n2. Effectiveness of strategies: Did the activities promote participation? Were materials safe and suitable?\n3. Inclusion: Were all learners, including those needing support and advanced learners, engaged?\n4. Adjustments: Which misconceptions remain? What will I change next time?")+
+TB(["Reflection prompt","Teacher's notes"],[["Learners who achieved the objectives","____"],["Learners who need remediation","____"],["Learners ready for enrichment","____"],["Most effective activity","____"],["Difficulties encountered","____"],["Next steps","____"]])+
+H("ILAW Alignment Check (DO 016, s. 2026)")+TB(["","ILAW part","Evidence in this plan"],[["I","Intentions","Standards, competency, objectives, success criteria, vocabulary, resources"],["L","Learning Experience",m+"-minute inquiry-based sequence with differentiation"],["A","Assessing Learning","20 formative questions, quick checks, exit ticket, test, key, matrix, rubric"],["W","Ways Forward","Assignment, enrichment, remediation, reflection"]]);
+$("out").style.display="block";$("out").scrollIntoView({behavior:"smooth"});
 }
+var GL={
+"force":["A push or a pull.","I use force to open the door.","Push your hands forward, then pull them back."],
+"balanced force":["Forces that are equal and cancel each other out.","The tug-of-war rope did not move.","Hold both palms level."],
+"unbalanced force":["Forces that are not equal, so movement changes.","The ball rolled because one push was stronger.","Hold one hand higher than the other."],
+"motion":["When something is moving.","The car is in motion.","Sweep one hand from left to right."],
+"rest":["Not moving.","The book is at rest on the desk.","Keep both hands still."],
+"speed":["How fast something moves.","The cheetah has a fast speed.","Move your hand slowly, then quickly."],
+"velocity":["How fast something moves and in which direction.","The bus travels at 40 km/h going north.","Point with your arm while moving it."],
+"direction":["The way something moves or points.","The arrow points to the right.","Point left, right, up, and down."],
+"distance":["How far something travels.","The distance from home to school is 2 km.","Spread your arms wide."],
+"gravity":["A force that pulls things toward Earth.","Gravity makes the fruit fall.","Drop your hands toward the floor."],
+"friction":["A force that slows moving things when surfaces rub.","Friction stops the sliding box.","Rub your palms together."],
+"acceleration":["Speeding up, slowing down, or changing direction.","The jeepney had acceleration when it sped up.","Move your hand faster and faster."],
+"magnitude":["How big or strong something is.","A big push has a large magnitude.","Show small, then big, with your hands."],
+"energy":["The ability to make things move or change.","Food gives us energy to play.","Pump your fists up with strength."],
+"organism":["A living thing.","A dog and a tree are organisms.","Wave your arms like a growing plant."],
+"cell":["The smallest living part of an organism.","Our body is made of many cells.","Make a small circle with your fingers."],
+"tissue":["A group of similar cells that work together.","Muscle tissue helps us move.","Link your fingers together."],
+"organ":["A body part made of tissues that does a job.","The heart is an organ.","Place your hand over your heart."],
+"organ system":["Organs that work together to do a big job.","The digestive system breaks down food.","Join both hands in a circle."],
+"producer":["A living thing that makes its own food.","Plants are producers.","Stretch your arms up like leaves."],
+"consumer":["A living thing that eats other living things.","A rabbit is a consumer.","Make a chewing motion."],
+"decomposer":["A living thing that breaks down dead plants and animals.","Mushrooms are decomposers.","Crumble your fingers downward."],
+"food chain":["Shows who eats whom, in order.","Grass, grasshopper, frog, snake.","Link your arms like a chain."],
+"ecosystem":["Living and non-living things in one place working together.","A pond is an ecosystem.","Draw a big circle in the air."],
+"photosynthesis":["How plants make food using sunlight, water, and carbon dioxide.","Leaves do photosynthesis.","Spread your arms like leaves facing the sun."],"chlorophyll":["The green substance in leaves that captures sunlight.","Chlorophyll makes leaves green.","Point to something green."],"glucose":["A sugar that plants make for food and energy.","Plants make glucose in their leaves.","Make a tiny cube with your fingers."],"carbon dioxide":["A gas that plants take in from the air.","We breathe out carbon dioxide.","Breathe out slowly."],"trophic level":["A feeding step in a food chain.","Producers are the first trophic level.","Climb steps with your hand."]};
+var BLS=["Remember","Understand","Apply","Analyze","Evaluate","Create"];
+var TOP=[
+{name:"Levels of biological organization",k:["organization","tissue","organ system"],cn:["Cell","Tissue","Organ","Organ system","Organism"],comp:"Describe the levels of biological organization from cells to organisms.",
+notes:"- Cells are the basic units of life.\n- Similar cells working together form a tissue, such as muscle tissue.\n- Different tissues working together form an organ, such as the heart.\n- Organs that work together form an organ system, such as the circulatory system.\n- Organ systems working together make an organism.\n- Order from smallest to largest: cell, tissue, organ, organ system, organism.",
+act:["Build the Levels",["Index cards or paper strips","Markers","Picture cards of body parts","String or yarn"],["Give each group five cards: cell, tissue, organ, organ system, organism.","Arrange the cards in order from smallest to largest.","Match each picture (muscle cell, heart, circulatory system, student) to its level.","Explain the order to another group."]],
+q:[["What is the smallest unit of life?","The cell.",0],["Name a living thing around you.","Any valid organism.",1],["Which card did you place first? Why?","Cell, because it is the smallest unit.",3],["Where did the heart belong?","At the organ level.",1],["What is a tissue?","A group of similar cells working together.",0],["How is an organ different from an organ system?","An organ is made of tissues; an organ system is organs working together.",3],["Which level is the stomach?","Organ.",2],["Which organs belong to the digestive system?","Mouth, esophagus, stomach, and intestines.",2],["Why do the levels depend on each other?","Each level builds the next, so a problem in one can affect the others.",4],["Draw the levels from cell to organism.","Cell, tissue, organ, organ system, organism.",5]],
+mc:[["What is the basic unit of life?",["Tissue","Cell","Organ","Organism"],"B"],["A group of similar cells working together is a","tissue,organ,system,organism".split(","),"A"],["The heart is an example of a(n)","cell,tissue,organ,organ system".split(","),"C"],["Which is the correct order from smallest to largest?",["Organ, cell, tissue, organism","Cell, tissue, organ, organ system, organism","Tissue, cell, organ, organism, organ system","Organism, organ system, organ, tissue, cell"],"B"],["The digestive system is an example of a(n)","cell,tissue,organ system,organism".split(","),"C"]],
+tf:[["Cells are the basic units of life.","TRUE"],["An organ is made of only one cell.","FALSE"],["Organ systems work together to make an organism.","TRUE"]],
+sa:[["Name the levels of organization from smallest to largest.","Cell, tissue, organ, organ system, organism."],["Give one example of an organ and its organ system.","Heart and circulatory system (or any valid pair)."]]},
+{name:"Food chains and trophic levels",k:["food chain","trophic","food web","producer","ecosystem"],cn:["Producer","Consumer","Decomposer","Food chain","Trophic level"],comp:"Describe how energy flows through food chains and trophic levels.",
+notes:"- Producers (plants) make their own food using sunlight; they are the first trophic level.\n- Primary consumers (herbivores) eat producers; secondary consumers eat herbivores; tertiary consumers eat other carnivores.\n- Decomposers (fungi, bacteria) break down dead organisms and return nutrients.\n- Arrows point to the organism that receives the energy: grass → grasshopper → frog → snake.\n- Only about 10% of energy passes to the next level, so there are fewer organisms at higher levels.",
+act:["Make a Food Chain",["Picture cards of local plants and animals","Paper strips","Markers","Tape"],["Give each group picture cards (rice, grasshopper, frog, snake, mushroom).","Arrange them into a food chain with arrows showing who eats whom.","Label each organism as producer, consumer, or decomposer, and give its trophic level.","Share and explain what happens if one organism disappears."]],
+q:[["Where do you get the energy you use to play?","From food, which comes from plants or animals.",0],["Where does food energy come from first?","The sun, through plants.",1],["Which organism is at the start of your chain?","The producer, such as rice or grass.",1],["Which way do the arrows point? Why?","Toward the eater; they show the flow of energy.",3],["What is a producer?","A living thing that makes its own food.",0],["What do decomposers do?","Break down dead organisms and return nutrients.",1],["In grass → grasshopper → frog → snake, who is the secondary consumer?","The frog.",2],["What happens if the frogs disappear?","Grasshoppers increase and snakes may lack food.",3],["Why are there fewer organisms at higher trophic levels?","Less energy is available at each level.",4],["Create your own food chain with four organisms.","Any valid chain that starts with a producer.",5]],
+mc:[["Which organism is a producer?",["Frog","Grass","Snake","Mushroom"],"B"],["A rabbit that eats grass is a","producer,primary consumer,decomposer,secondary consumer".split(","),"B"],["Decomposers",["make food from sunlight","eat only plants","break down dead organisms","are always animals"],"C"],["In a food chain, the arrow points to the",["organism that is eaten","organism that eats","sun only","decomposer only"],"B"],["Which is the first trophic level?","Producers,Primary consumers,Secondary consumers,Decomposers".split(","),"A"]],
+tf:[["Plants are producers.","TRUE"],["Energy increases at each higher trophic level.","FALSE"],["Fungi are decomposers.","TRUE"]],
+sa:[["Write a food chain with three organisms.","Grass → grasshopper → frog (or any valid chain)."],["Why are decomposers important?","They recycle nutrients back into the ecosystem."]]},
+{name:"Photosynthesis",k:["photosynthesis"],cn:["Photosynthesis","Chlorophyll","Glucose","Carbon dioxide"],comp:"Explain how plants make food through photosynthesis.",
+notes:"- Photosynthesis is how plants, algae, and some bacteria make food using light energy.\n- Plants take in carbon dioxide through the stomata and water through the roots.\n- Chlorophyll in the chloroplasts captures sunlight.\n- Word equation: carbon dioxide + water → (light, chlorophyll) → glucose + oxygen.\n- Oxygen is released; glucose is used for energy and growth.",
+act:["Light and Leaves",["Two small seedlings","Cardboard box","Water","A leaf for observation"],["Teacher sets up two seedlings 3 to 5 days earlier: one in sunlight, one inside a dark box.","Observe and compare leaf color and growth.","Discuss why the plant without light looked different.","Draw a diagram of what goes in and out of a leaf."]],
+q:[["What do plants need to grow?","Sunlight, water, air, and nutrients.",0],["Where do plants get their food?","They make it themselves.",1],["How did the two plants differ?","The plant without light was pale and weak.",1],["Why do you think this happened?","It could not make food without light.",3],["What is photosynthesis?","The process by which plants make food from light, water, and carbon dioxide.",0],["What does chlorophyll do?","Captures sunlight energy.",1],["What gas do plants release?","Oxygen.",2],["Why are plants important to animals?","They provide food and oxygen.",3],["Write the word equation for photosynthesis.","Carbon dioxide + water → glucose + oxygen (with light).",4],["Draw a labeled diagram of photosynthesis.","Shows sunlight, carbon dioxide, water, glucose, and oxygen.",5]],
+mc:[["Plants make food through",["respiration","photosynthesis","digestion","decomposition"],"B"],["The green pigment that captures sunlight is",["glucose","chlorophyll","oxygen","starch"],"B"],["Which is a raw material of photosynthesis?",["Oxygen","Carbon dioxide","Glucose","Heat"],"B"],["Which gas is released during photosynthesis?",["Carbon dioxide","Nitrogen","Oxygen","Hydrogen"],"C"],["Photosynthesis happens mainly in the",["roots","stem","leaves","flowers"],"C"]],
+tf:[["Plants need light for photosynthesis.","TRUE"],["Glucose is a raw material of photosynthesis.","FALSE"],["Chlorophyll is found in chloroplasts.","TRUE"]],
+sa:[["List two things plants need for photosynthesis.","Any two of light, water, carbon dioxide."],["What are the two products of photosynthesis?","Glucose and oxygen."]]},
+{name:"Balanced and unbalanced forces",k:["force"],cn:["Force","Balanced forces","Unbalanced forces","Gravity"],comp:"Identify that forces act between objects and can be measured; describe everyday situations with balanced and unbalanced forces.",
+notes:"- A force is a push or a pull that acts between objects. It is measured in newtons (N) using a spring scale.\n- Balanced forces are equal in size and opposite in direction. They do not change an object’s motion: a book resting on a table, a tug-of-war where the rope does not move.\n- Unbalanced forces are not equal, so the net force is not zero. They change speed or direction: a falling fruit, an accelerating car.\n- Arrows in a force diagram show direction (where the arrow points) and relative size (arrow length).",
+act:["Push, Pull, and Tug",["Spring scale or rubber band","Rope or string","Small box","Toy car"],["Pull a box gently, then harder; note the difference in effort (or the spring scale reading in newtons).","Hold a gentle tug-of-war between two teams with equal pulls; observe the rope.","Let one team pull harder; observe the rope.","Draw arrows to show each situation."]],
+q:[["What is a force?","A push or a pull.",0],["Is opening a door a push or a pull?","Either, depending on how it is opened.",1],["What happened when both teams pulled equally?","The rope did not move; the forces were balanced.",1],["What happened when one team pulled harder?","The rope moved toward the stronger pull; the forces were unbalanced.",3],["What are balanced forces?","Equal forces in opposite directions that do not change motion.",0],["Why is a falling fruit an example of unbalanced forces?","Gravity pulls it down with no equal force balancing it.",3],["Is a car speeding up balanced or unbalanced?","Unbalanced; the net force changes its speed.",2],["How do you draw balanced forces?","Two arrows of equal length pointing in opposite directions.",5],["What is the difference between balanced and unbalanced forces?","Balanced forces cancel and keep motion the same; unbalanced forces change speed or direction.",1],["A ball is at rest. What can keep it at rest?","Balanced forces acting on it.",2]],
+mc:[["What is a force?",["A color","A push or a pull","A sound","A shape"],"B"],["Which shows balanced forces?",["A fruit falling","A car speeding up","A person standing still","A ball being kicked"],"C"],["Which shows unbalanced forces?",["A book resting on a table","A person standing still","A fruit falling from a tree","A tug-of-war that does not move"],"C"],["What can unbalanced forces do to an object?",["Change its speed or direction","Make it disappear","Change its color","Keep its motion exactly the same"],"A"],["What do the arrows in a force diagram show?",["Color and size of the object","Direction and relative size of forces","Name of the object","Weight of the paper"],"B"]],
+tf:[["A force can be a push or a pull.","TRUE"],["Balanced forces always make an object speed up.","FALSE"],["Unbalanced forces can change the speed or direction of an object.","TRUE"]],
+sa:[["Give one example of balanced forces.","A person standing still, or a book at rest on a table."],["Draw two arrows showing unbalanced forces.","Two opposite arrows of different lengths."]]},
+{name:"Understanding motion",k:["motion","speed","velocity"],cn:["Motion","Speed","Velocity","Distance"],comp:"Describe the motion of an object in terms of distance, speed, and direction.",
+notes:"- An object is in motion when its position changes over time relative to a reference point; it is at rest if its position does not change.\n- Distance is how far an object travels.\n- Speed = distance ÷ time. Example: 100 m in 20 s is 5 m/s.\n- Velocity is speed with direction, such as 5 m/s east.",
+act:["Race and Measure",["Measuring tape or meter stick","Stopwatch or phone timer","Toy car or marble","Masking tape"],["Mark a 2 m track with tape.","Roll the toy car and time it from start to finish; repeat 3 times.","Compute speed = distance ÷ time for each trial.","Compare results, tell which trial was fastest, and state the direction of motion."]],
+q:[["What does it mean for an object to be in motion?","Its position changes over time.",0],["Name something in motion that you saw today.","Any valid example, such as a moving jeepney.",1],["Which trial was fastest? How do you know?","The one with the shortest time for the same distance.",3],["Why do we repeat the trials?","To get more reliable results.",1],["What is speed?","How fast an object moves; distance divided by time.",0],["How is velocity different from speed?","Velocity includes direction.",3],["A bike travels 60 m in 12 s. What is its speed?","5 m/s.",2],["Describe a moving object using distance, time, and direction.","Any valid description, such as 10 m east in 5 s.",5],["Why is a reference point needed to describe motion?","Motion is a change in position relative to something.",4],["If two cars travel the same distance, which has the greater speed?","The one that takes less time.",2]],
+mc:[["Speed is computed as",["time ÷ distance","distance ÷ time","distance × time","distance + time"],"B"],["A runner covers 100 m in 20 s. What is the speed?",["2 m/s","5 m/s","20 m/s","120 m/s"],"B"],["Which quantity includes direction?",["Distance","Speed","Velocity","Time"],"C"],["An object is at rest when its",["position changes","position does not change","speed increases","direction changes"],"B"],["Which unit is used for speed?",["kg","m/s","N","°C"],"B"]],
+tf:[["A car moving at 60 km/h north has a velocity.","TRUE"],["Distance and speed mean the same thing.","FALSE"],["An object in motion changes position over time.","TRUE"]],
+sa:[["A bus travels 150 km in 3 hours. What is its average speed?","50 km/h."],["Give one example of an object at rest.","A book on a table, or any valid example."]]}];
+function TM(t){var l=(t||"").toLowerCase();if(!l)return null;for(var i=0;i<TOP.length;i++){if(TOP[i].k.some(function(k){return l.indexOf(k)>-1}))return TOP[i]}return null}
+function VOC(d,cs){
+var lines=d.vo?d.vo.split(/\n+/):cs;
+return lines.map(function(z){var p=z.split(/\s+[-–]\s+|:\s*/),w=p[0].trim(),k=w.toLowerCase(),g=GL[k]||GL[k.replace(/s$/,"")];
+var mean=p.slice(1).join(" - ")||(g?g[0]:"A word about "+d.tp+" that means ____.");
+return [w,mean,g?g[1]:"Use “"+w+"” in a sentence: ____",g?g[2]:"Think of an action for “"+w+"”."]})}
+function aip(){var d=vals();
+$("prompt").value="Act as a DepEd master teacher. Write a concise lesson plan in the DepEd ILAW format (Intentions, Learning Experience, Assessing Learning, Ways Forward).\nSubject: "+d.sub+"; Grade: "+d.gr+"; Week: "+d.wk+"; Time: "+d.m+" minutes\nTopic: "+d.tp+"\nCompetency: "+d.c+(d.cn?"\nKey concepts: "+d.cn.replace(/\n+/g,"; "):"")+"\n\nInclude: 3 objectives; a 4-row timed table (Activate, Explore and Explain, Apply, Wrap-up) with teacher and learner actions; 5 formative questions tagged by Bloom's level with answers, an exit ticket; assignment, enrichment, remediation, reflection. "+($("mode").value==="Detailed"?"Make it detailed: content and performance standards, 7 or more objectives (cognitive, psychomotor, affective), I-can success criteria, a vocabulary table, materials with safety reminders, a 5-stage timed flow (Activate, Explore, Explain, Elaborate, Evaluate) with procedures, guide questions, expected responses and differentiation, 20 formative questions with Bloom levels and answers, quick checks, a 3-2-1 exit ticket, a 10-item test with answer key, an alignment matrix, a 4-level rubric, and Ways Forward with assignment, enrichment, remediation and teacher reflection. ":"Keep it to one page. ")+"Use simple language and low-cost local materials.";
+$("aibox").style.display="block";$("aibox").scrollIntoView({behavior:"smooth"})}
 function cp(text,btn){
 function ok(){var o=btn.textContent;btn.textContent="Copied!";setTimeout(function(){btn.textContent=o},1500)}
 function fb(){var t=document.createElement("textarea");t.value=text;document.body.appendChild(t);t.select();try{document.execCommand("copy");ok()}catch(e){}document.body.removeChild(t)}
-try{navigator.clipboard.writeText(text).then(ok,fb)}catch(e){fb()}
-}
-function gv(id){var e=$(id);return e?e.innerText:""}
-function planText(){return $("hd").innerText+"\n\n"+$("plan").innerText+"\n\n© 2026 ridojr. All rights reserved."}
+try{navigator.clipboard.writeText(text).then(ok,fb)}catch(e){fb()}}
+function gv(id){return $(id).innerText}
+function sec(i){var h=$("plan").querySelectorAll("h2"),o="",n=h[i]?h[i].nextElementSibling:null;while(n&&n.tagName!=="H2"){o+=n.innerText+"\n";n=n.nextElementSibling}return o.trim()}
+$("mode").onchange=function(){$("dx").style.display=this.value==="Detailed"?"grid":"none"};
 $("gen").onclick=gen;$("ai").onclick=aip;$("print").onclick=function(){window.print()};
 $("copy").onclick=function(){cp($("prompt").value,$("copy"))};
-$("cp").onclick=function(){cp(planText(),$("cp"))};
+$("cp").onclick=function(){cp($("hd").innerText+"\n\n"+$("plan").innerText+"\n\n© 2026 ridojr. All rights reserved.",$("cp"))};
 $("save").onclick=function(){
 var m=$("msg"),d=vals(),b=$("save");
 if(SCRIPT_URL.indexOf("PASTE")===0){m.textContent="Set SCRIPT_URL in the code first (see README).";return}
 b.disabled=true;m.textContent="Saving...";
-var data={teacher:d.t,school:d.sc,subject:d.sub,grade:d.gr,week:d.wk,duration:d.m+" minutes",topic:d.tp,competency:d.c,
-contentStd:gv("s1a"),perfStd:gv("s1b"),materials:gv("s1g"),
-intentions:gv("s1d")+"\n\nSuccess criteria:\n"+gv("s1e"),
-learning:$("plan").querySelector("table").innerText+"\n\n"+gv("s2d"),
-assessing:gv("s3a")+"\n\n"+gv("s3b"),
-forward:gv("s4a")+"\n"+gv("s4b")+"\n"+gv("s4c")+"\n"+gv("s4d")};
+var data={teacher:d.t,school:d.sc,subject:d.sub,grade:d.gr,week:d.wk,duration:d.m+" minutes",topic:d.tp,competency:d.c,intentions:sec(0),learning:sec(1),assessing:sec(2),forward:sec(3)};
 fetch(SCRIPT_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(data)})
 .then(function(){m.textContent="Saved to Google Sheet.";b.disabled=false})
 .catch(function(){m.textContent="Could not save. Check your connection and SCRIPT_URL.";b.disabled=false});
